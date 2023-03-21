@@ -2,8 +2,9 @@ import React from 'react';
 import './Main.css';
 import getStarted from './getStarted';
 import displayCard from './displayCard';
-
-import { Slide, Box, Stack, Typography, Grid } from '@mui/material';
+import toolBar from './toolbar';
+import bottomNav from './bottomBar';
+import { Box, Stack, Typography, Grid } from '@mui/material';
 
 
 
@@ -11,17 +12,14 @@ function Main() {
   return (
     
     <div className="Main">
+      {toolBar()}
       <header className="Main-header">
-      
-      
-  
 
         
      
             <Stack spacing={2}>
                 <Typography variant = "h2">Opt-U-Out</Typography>
-                <Typography variant = "h6">Presented by:</Typography>
-                <Typography variant = "h3">TECH FIVE</Typography>
+                
             </Stack>
              
       </header>
@@ -56,19 +54,21 @@ function Main() {
 
         </Grid>
 
-        <Grid item spacing ={10} className = "right-paragraph">
-
-        {displayCard()}
-
-        </Grid>
+        
         </Box>
+        <div className="computer">
+				<img src="https://www.bebold.ch/img/home/macbook-white.png" alt="MacBook Computer Apple">
+          </img>
+				<div id="image" ></div>
+			</div>
 
         </Grid>
 
         
       </body>
-      
+      {bottomNav()}
     </div>
+    
   );
 }
 

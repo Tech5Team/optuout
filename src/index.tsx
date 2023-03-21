@@ -23,7 +23,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-    <Main/>
+      <Main/>
     </ThemeProvider>
   </React.StrictMode>
 );
