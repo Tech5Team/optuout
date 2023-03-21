@@ -38,7 +38,7 @@
     text-align: right;
   }
   
-  .computer {
+  .laptop {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -51,7 +51,7 @@
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
 }
-.computer #image {
+.laptop #image {
     position: fixed;
     top: 44%;
     left: 95%;
@@ -61,7 +61,7 @@
     background-size: cover;
     background-image: url('../public/peoplefindersample.png')
 }
-.computer img {
+.laptop img {
     position: fixed;
     top: 45%;
     left: 95%;

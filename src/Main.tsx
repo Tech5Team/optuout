@@ -56,8 +56,8 @@ function Main() {
 
         
         </Box>
-        <div className="computer">
-				<img src="https://www.bebold.ch/img/home/macbook-white.png" alt="MacBook Computer Apple">
+        <div className="laptop">
+				<img src="laptop.png" alt="Laptop">
           </img>
 				<div id="image" ></div>
 			</div>
