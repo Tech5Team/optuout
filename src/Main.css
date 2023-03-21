@@ -30,4 +30,11 @@
     text-align: left;
   }
   
+  .right-paragraph{
+    font-size: 25px;
+    margin-right: 100px;
+    margin-top: 75px;
+    color: white;
+    text-align: right;
+  }
   

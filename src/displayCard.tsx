@@ -5,9 +5,9 @@ import {Card, CardActions, Button, CardContent, CardMedia, Typography} from '@mu
 export default function displayCard(){
 
     return (
-        <Card sx = {{marginLeft: '20%', marginTop: '7.5%',height: 300, width: 300, background: "linear-gradient(rgba(188,58,98,255),rgba(231,109,115,255), rgba(254,135,124,255))"}}> 
+        <Card sx = {{marginTop: '7.5%',height: '300px', width: '300px', background: "linear-gradient(rgba(188,58,98,255),rgba(231,109,115,255), rgba(254,135,124,255))"}}> 
           
-        <CardMedia component = "img" sx = {{height: 300, width: 300}} image = "blanklock.png" alt = "lock"></CardMedia>
+        <CardMedia component = "img" sx = {{height: '300px', width: '300px'}} image = "blanklock.png" alt = "lock"></CardMedia>
         
         
         <CardActions sx ={{justifyContent: 'center'}}>

@@ -2,9 +2,10 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { JsxElement } from 'typescript';
 
 
-export default function getStarted(){
+export default function getStarted(): React.ReactElement{
 
     return (
     <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "center", justifyContent: "center"}}>
