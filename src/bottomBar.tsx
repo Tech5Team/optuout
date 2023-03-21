@@ -10,8 +10,10 @@ export default function bottomNav() {
 
   return (
     <Box pb = {7} sx={{ width: '100%', position: 'fixed', bottom: 0, height: 0, top: "auto"}}>
-      <BottomNavigation
-        sx={{background: 'inherit'}}
+      <BottomNavigation 
+        sx={{background: 'inherit', '& .MuiSvgIcon-root, & .MuiBottomNavigationAction-label': {
+            color: theme => theme.palette.secondary.main
+          }}}
         showLabels
       >
         <BottomNavigationAction  label="Privacy Statement" icon={<PrivacyTipIcon color = "secondary"/>} />
