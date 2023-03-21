@@ -1,7 +1,11 @@
 .Main {
     text-align: center;
     background: linear-gradient(rgba(188,58,98,255),rgba(231,109,115,255), rgba(254,135,124,255));
-    height: 100vh;
+    min-height: 100%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    position: fixed;
   }
   
 
@@ -27,12 +31,13 @@
     margin-left: 100px;
     margin-top: 75px;
     color: white;
+    position: absolute;
     text-align: left;
   }
   
   .right-paragraph{
     font-size: 25px;
-    margin-right: 100px;
+    margin-right: 50px;
     margin-top: 75px;
     color: white;
     text-align: right;
