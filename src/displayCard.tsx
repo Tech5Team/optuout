@@ -1,5 +1,5 @@
 
-import {Card, CardActions, Button, CardContent, CardMedia, Typography} from '@mui/material';
+import {Card, CardActions, Button, CardMedia} from '@mui/material';
 
 
 export default function displayCard(){

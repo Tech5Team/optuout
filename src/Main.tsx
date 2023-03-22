@@ -24,7 +24,7 @@ function Main() {
              
       </header>
       
-      <body className="Main-body">
+      <div className="Main-body">
         
         {getStarted()}
 
@@ -65,7 +65,7 @@ function Main() {
         </Grid>
 
         
-      </body>
+      </div>
       {bottomNav()}
     </div>
     
