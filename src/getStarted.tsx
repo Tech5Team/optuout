@@ -2,7 +2,6 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { JsxElement } from 'typescript';
 
 
 export default function getStarted(): React.ReactElement{
@@ -15,14 +14,14 @@ export default function getStarted(): React.ReactElement{
         autoFocus
         variant = "filled"
         color = "secondary" 
-        style = {{width: 500}} 
+        style = {{width: 500, zIndex: 10}} 
         sx ={{input: {color: 'white'}}}
         >
         </TextField>
         <Button 
         variant = "contained" 
         color = "secondary"
-        
+        style = {{zIndex: 10}}
         >
             Get Started
             </Button>
