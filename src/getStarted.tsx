@@ -1,16 +1,22 @@
-import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import React, { useState } from 'react'
 
+import autoComplete from './autoComplete';
+   
+export default function GetStarted(){
+    const [text, setText] = useState('');
 
-export default function getStarted(): React.ReactElement{
+    
+    var apiKey = "AIzaSyANTb-VSSZpKjZHXjkP_WYLy_8-tb2s-V0";
 
+    
     return (
     <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "center", justifyContent: "center"}}>
         
         <TextField 
-        label = "Input your Name:" 
+        label = "Enter your full Name:" 
         autoFocus
         variant = "filled"
         color = "secondary" 
@@ -18,6 +24,8 @@ export default function getStarted(): React.ReactElement{
         sx ={{input: {color: 'white'}}}
         >
         </TextField>
+
+        {autoComplete()}
         <Button 
         variant = "contained" 
         color = "secondary"
