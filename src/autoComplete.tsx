@@ -134,7 +134,7 @@ export default function GoogleMaps() {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} label="Enter your city and state:" fullWidth />
+        <TextField {...params} variant = 'filled' color = "secondary" label="Enter your city and state:" fullWidth />
       )}
       renderOption={(props, option) => {
         const matches =

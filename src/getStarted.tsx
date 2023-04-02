@@ -11,7 +11,7 @@ export default function GetStarted(){
     <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "center", justifyContent: "center"}}>
         
         <TextField 
-        label = "Enter your full Name:" 
+        label = "Enter your full name:" 
         autoFocus
         variant = "filled"
         color = "secondary" 
