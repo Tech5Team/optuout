@@ -8,13 +8,19 @@ import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
 
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLEAPI
+const restrict = {
+  types: ['(cities)'],
+  componentRestrictions: {
+    country: "us"
+  }
+};
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;
   }
 
+  
   const script = document.createElement('script');
   script.setAttribute('async', '');
   script.setAttribute('id', id);
@@ -47,7 +53,7 @@ export default function GoogleMaps() {
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
       loadScript(
-        `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`,
+        `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_KVAR}&libraries=places&types=(cities)`,
         document.querySelector('head'),
         'google-maps',
       );
@@ -60,7 +66,7 @@ export default function GoogleMaps() {
     () =>
       debounce(
         (
-          request: { input: string },
+          request: { input: string, types: string[] },
           callback: (results?: readonly PlaceType[]) => void,
         ) => {
           (autocompleteService.current as any).getPlacePredictions(
@@ -90,7 +96,7 @@ export default function GoogleMaps() {
       return undefined;
     }
 
-    fetch({ input: inputValue }, (results?: readonly PlaceType[]) => {
+    fetch({ input: inputValue, types: ['(cities)']}, (results?: readonly PlaceType[]) => {
       if (active) {
         let newOptions: readonly PlaceType[] = [];
 
