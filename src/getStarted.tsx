@@ -6,11 +6,6 @@ import React, { useState } from 'react'
 import autoComplete from './autoComplete';
    
 export default function GetStarted(){
-    const [text, setText] = useState('');
-
-    
-    var apiKey = "AIzaSyANTb-VSSZpKjZHXjkP_WYLy_8-tb2s-V0";
-
     
     return (
     <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "center", justifyContent: "center"}}>
@@ -21,7 +16,6 @@ export default function GetStarted(){
         variant = "filled"
         color = "secondary" 
         style = {{width: 500, zIndex: 10}} 
-        sx ={{input: {color: 'white'}}}
         >
         </TextField>
 

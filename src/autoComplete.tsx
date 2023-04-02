@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyANTb-VSSZpKjZHXjkP_WYLy_8-tb2s-V0';
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLEAPI
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
