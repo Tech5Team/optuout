@@ -1,7 +1,6 @@
 import React from 'react';
 import './Main.css';
 import getStarted from './getStarted';
-import displayCard from './displayCard';
 import toolBar from './toolbar';
 import bottomNav from './bottomBar';
 import { Box, Stack, Typography, Grid } from '@mui/material';
@@ -50,7 +49,7 @@ function Main() {
         
         </Grid>
 
-       
+      
 
         </Grid>
 

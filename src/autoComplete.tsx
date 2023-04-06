@@ -8,12 +8,6 @@ import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
 
-const restrict = {
-  types: ['(cities)'],
-  componentRestrictions: {
-    country: "us"
-  }
-};
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
