@@ -1,7 +1,6 @@
 import React from 'react';
 import './Main.css';
 import getStarted from './getStarted';
-import displayCard from './displayCard';
 import toolBar from './toolbar';
 import bottomNav from './bottomBar';
 import { Box, Stack, Typography, Grid } from '@mui/material';
@@ -45,12 +44,12 @@ function Main() {
         
         <Typography variant = "h4">How it works</Typography>
         
-        <Typography variant = "h6" style={{marginTop: '25px', marginLeft: '50px'}}>1. Enter your name and either your phone number or address</Typography>
+        <Typography variant = "h6" style={{marginTop: '25px', marginLeft: '50px'}}>1. Enter your full name, city, and state</Typography>
         <Typography variant = "h6" style={{marginTop: '25px', marginLeft: '50px'}}>2. If your info exists on people search sites, we'll help you remove it</Typography>
         
         </Grid>
 
-       
+      
 
         </Grid>
 
