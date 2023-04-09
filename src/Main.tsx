@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './Main.css';
-import getStarted from './getStarted';
+import GetStarted from './getStarted';
 import toolBar from './toolbar';
 import bottomNav from './bottomBar';
 import { Box, Stack, Typography, Grid } from '@mui/material';
+import { UserContext } from './context';
 
 
 
 function Main() {
+ 
+
   return (
     
     <div className="Main">
       {toolBar()}
       <header className="Main-header">
 
-        
-     
             <Stack spacing={2}>
                 <Typography variant = "h2">Opt-U-Out</Typography>
                 
@@ -24,8 +25,8 @@ function Main() {
       </header>
       
       <div className="Main-body">
-        
-        {getStarted()}
+     
+        {GetStarted()}
 
 
         <Grid container>
@@ -67,7 +68,7 @@ function Main() {
       </div>
       {bottomNav()}
     </div>
-    
+
   );
 }
 
