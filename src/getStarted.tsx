@@ -38,9 +38,6 @@ export default function GetStarted(){
 
  
     function submit(){
-        /* fetch('https://blue-jittery-magpie.cyclic.app/checksites')
-        .then(repsonse=>repsonse.json())
-        .then(data=>console.log(data)) */
 
         var trimmedCityState = cityState.split(', ')
 
@@ -54,9 +51,43 @@ export default function GetStarted(){
             return 
         }
         else if (trimmedCityState.length == 3){
+
+            let firstname = name.split(' ')[0];
+            let lastname = name.split(' ')[1];
             let city = trimmedCityState[0];
             let state = trimmedCityState[1];
             console.log(city + " " + state)
+
+            fetch("https://navy-blue-moth-shoe.cyclic.app/checksites", {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({
+
+                  user: {
+                    first: firstname, 
+                    last: lastname, 
+                    city: city, 
+                    state: state
+                  }
+                
+                }),
+                })
+            .then(function(response) {
+                if(response.ok){
+                    return response.json();
+                }{
+                    throw new Error("Post Failed")
+                }
+            }).then(function(responseBody){
+                console.log(responseBody.uri)
+            })
+            .catch(function(error) {
+                console.log("Request failed", error);
+            });
             return
         }
         
