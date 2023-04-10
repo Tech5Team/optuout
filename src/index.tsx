@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Main from './Main';
 import { ThemeProvider, createTheme } from '@mui/material';
+import { UserContextProvider } from './context';
 
 const theme = createTheme({
   palette: {
@@ -17,13 +18,18 @@ const theme = createTheme({
     
   }
 });
+
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+    <UserContextProvider>
       <Main/>
+      </UserContextProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

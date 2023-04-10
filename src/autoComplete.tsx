@@ -7,6 +7,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
+import { useContext, useState } from 'react';
+import { UserContext } from './context';
+
+
 
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
@@ -43,6 +47,12 @@ export default function GoogleMaps() {
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState<readonly PlaceType[]>([]);
   const loaded = React.useRef(false);
+
+  const { cityState, setCityState } = useContext(UserContext);
+
+  const handleCityStateInputChange = (event:any) => {
+    setCityState(event.target.value);
+};
 
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
@@ -112,6 +122,7 @@ export default function GoogleMaps() {
   }, [value, inputValue, fetch]);
 
   return (
+
     <Autocomplete
       id="google-map-demo"
       sx={{ width: 300 }}
@@ -129,12 +140,15 @@ export default function GoogleMaps() {
       onChange={(event: any, newValue: PlaceType | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setValue(newValue);
+        setCityState(newValue? newValue.description : '');
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} variant = 'filled' color = "secondary" label="Enter your city and state:" fullWidth />
+        
+        <TextField {...params} variant = 'filled' color = "secondary" label="Enter your city and state:" fullWidth value={cityState} onChange ={handleCityStateInputChange} />
+
       )}
       renderOption={(props, option) => {
         const matches =
