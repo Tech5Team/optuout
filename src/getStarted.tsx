@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import DialogWindow from './dialog';
 import autoComplete from './autoComplete';
 import { UserContext } from './context';
+import { GoogleLogin } from '@react-oauth/google';
 
 export interface userFound {
     hostname: string;
@@ -17,19 +18,33 @@ export interface OptOut{
   url: string; 
 }
 
+function sanitizeFunc(sanitize: string) {
+  const nameRegex = /^[a-zA-Z\s']+$/; 
+  const sanitized = sanitize.trim();
+
+  if (!nameRegex.test(sanitize)) {
+
+    return null;
+  }
+
+  return sanitized;
+}
+
 
 function checkFullName(fullName: string) {
-    const nameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces
+    const nameRegex = /^[a-zA-Z\s']+$/; 
     const nameArray = fullName.trim().split(" ");
-  
-    // Check if there's first and last only
+
     if (nameArray.length !== 2) {
       return false;
     }
   
-    // Check if each name only contains letters and spaces
     for (let i = 0; i < nameArray.length; i++) {
       if (!nameRegex.test(nameArray[i])) {
+        return false;
+      }
+
+      else if (nameArray[i].length > 25) {
         return false;
       }
     }
@@ -40,14 +55,21 @@ function checkFullName(fullName: string) {
 
 export default function GetStarted(){
     
-    const { name, setName, cityState } = useContext(UserContext);
+    const { name, setName, cityState, isLoggedin, setIsLoggedin} = useContext(UserContext);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
     const [results, setResults] = useState<userFound[]>([]);
     const [optoutLinks, setOptOutLinks] = useState<OptOut[]>([]);
 
 
+    const handleLoginSuccess = (credentialResponse:any) => {
+      console.log(credentialResponse);
+      setIsLoggedin(true);
+    };
+
+
     useEffect(() => {
+    
       fetch('https://us-central1-optuout-e7ffe.cloudfunctions.net/app/graphql', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -65,11 +87,11 @@ export default function GetStarted(){
             .then(res => res.json())
             .then(data => setOptOutLinks(data.data.optOuts))
             .catch(error => console.error(error));
-    
+     
       return () => {
         console.log('done')
       }
-    }, [])
+    }, )
     
     const handleOpenDialog = () => {
       setDialogOpen(true);
@@ -85,6 +107,7 @@ export default function GetStarted(){
 
  
     function submit(){
+
         var trimmedCityState = cityState.split(', ')
 
         if (!trimmedCityState.includes('USA')){
@@ -104,6 +127,12 @@ export default function GetStarted(){
             let city = trimmedCityState[0];
             let state = trimmedCityState[1];
 
+            if (sanitizeFunc(city) == null) {
+              return
+            }
+            else if (sanitizeFunc(state) == null) {
+              return
+            }
             const variables = { first: firstname, last: lastname, city: city, state: state };
             const query = `
               mutation CheckSites($first: String!, $last: String!, $city: String!, $state: String!) {
@@ -155,6 +184,19 @@ export default function GetStarted(){
       <div>
     <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "center", justifyContent: "center"}}>
         
+    {!isLoggedin && 
+        <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
+      <GoogleLogin
+    onSuccess={credentialResponse => {
+      handleLoginSuccess(credentialResponse)
+    }}
+    onError={() => {
+      console.log('Login Failed');
+    }}
+  />
+  </div>
+  }
+  
         <TextField 
         value = {name}
         onChange = {handleChange}
@@ -165,9 +207,10 @@ export default function GetStarted(){
         style = {{width: 500, zIndex: 10}} 
         >
         </TextField>
-
         {autoComplete()}
+ 
         <Button 
+        disabled = {!isLoggedin}
         variant = "contained" 
         color = "secondary"
         style = {{zIndex: 10}}
@@ -179,14 +222,10 @@ export default function GetStarted(){
             Get Started
             </Button>
 
-            
-
-            
-
             <DialogWindow optouts = {optoutLinks} data = {results} open={dialogOpen} spinner = {showSpinner} closeDialog={handleCloseDialog} />
 
     </Stack>
-    {results.length > 1 && <Button 
+    {results.length > 1 && <Button
         variant = "contained" 
         color = "secondary"
         style = {{width: 250 ,zIndex: 10}}

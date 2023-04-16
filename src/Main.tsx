@@ -1,16 +1,18 @@
-import React, { createContext, useState } from 'react';
 import './Main.css';
 import GetStarted from './getStarted';
 import toolBar from './toolbar';
 import bottomNav from './bottomBar';
 import { Box, Stack, Typography, Grid } from '@mui/material';
+import { GoogleLogin} from '@react-oauth/google';
 import { UserContext } from './context';
+import { useContext } from 'react';
 
 
 
-function Main() {
+
+export default function Main() {
+
  
-
   return (
     
     <div className="Main">
@@ -25,8 +27,8 @@ function Main() {
       </header>
       
       <div className="Main-body">
-     
-        {GetStarted()}
+        
+       {GetStarted()}
 
 
         <Grid container>
@@ -73,4 +75,3 @@ function Main() {
 }
 
 
-export default Main;

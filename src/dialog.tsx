@@ -1,10 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -16,8 +12,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { userFound } from './getStarted';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import CheckIcon from '@mui/icons-material/Check';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { Avatar, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { OptOut } from './getStarted';
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
