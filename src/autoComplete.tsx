@@ -49,7 +49,7 @@ export default function GoogleMaps() {
   const [options, setOptions] = React.useState<readonly PlaceType[]>([]);
   const loaded = React.useRef(false);
 
-  const { cityState, setCityState,  } = useContext(UserContext);
+  const { cityState, setCityState, isLoggedin } = useContext(UserContext);
 
   const handleCityStateInputChange = (event:any) => {
     setCityState(event.target.value);
@@ -124,7 +124,7 @@ export default function GoogleMaps() {
 
   return (
 
-    <Autocomplete
+    isLoggedin && <Autocomplete
       id="google-map-demo"
       sx={{ width: 300 }}
       getOptionLabel={(option) =>

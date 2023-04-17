@@ -7,7 +7,7 @@ import DialogWindow from './dialog';
 import autoComplete from './autoComplete';
 import { UserContext } from './context';
 import { GoogleLogin } from '@react-oauth/google';
-
+import jwt_decode from "jwt-decode"
 export interface userFound {
     hostname: string;
     found: string;
@@ -60,19 +60,22 @@ export default function GetStarted(){
     const [showSpinner, setShowSpinner] = useState(false);
     const [results, setResults] = useState<userFound[]>([]);
     const [optoutLinks, setOptOutLinks] = useState<OptOut[]>([]);
+    const [token, setToken] = useState<string>('');
 
 
     const handleLoginSuccess = (credentialResponse:any) => {
-      console.log(credentialResponse);
       setIsLoggedin(true);
+      setToken(credentialResponse.credential);
     };
 
 
     useEffect(() => {
-    
+      if (isLoggedin){
       fetch('https://us-central1-optuout-e7ffe.cloudfunctions.net/app/graphql', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { 'Content-Type': 'application/json',
+                         'Authorization': `Bearer ${token}`
+             },
               body: JSON.stringify({
                 query: `
                   query {
@@ -87,11 +90,11 @@ export default function GetStarted(){
             .then(res => res.json())
             .then(data => setOptOutLinks(data.data.optOuts))
             .catch(error => console.error(error));
-     
+          }
       return () => {
         console.log('done')
       }
-    }, )
+    }, [isLoggedin])
     
     const handleOpenDialog = () => {
       setDialogOpen(true);
@@ -146,14 +149,14 @@ export default function GetStarted(){
             const body = JSON.stringify({ query, variables });
 
             setShowSpinner(true);
-            
-
+          
 
             fetch("https://us-central1-optuout-e7ffe.cloudfunctions.net/app/graphql", {
                 method: 'POST',
                 headers: {
                   'Accept': 'application/json',
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                   'Authorization': `Bearer ${token}`
                 },
 
                 body: body
@@ -197,7 +200,7 @@ export default function GetStarted(){
   </div>
   }
   
-        <TextField 
+        {isLoggedin && <TextField 
         value = {name}
         onChange = {handleChange}
         label = "Enter your full name:" 
@@ -206,10 +209,10 @@ export default function GetStarted(){
         color = "secondary" 
         style = {{width: 500, zIndex: 10}} 
         >
-        </TextField>
+        </TextField>}
         {autoComplete()}
  
-        <Button 
+        {isLoggedin && <Button 
         disabled = {!isLoggedin}
         variant = "contained" 
         color = "secondary"
@@ -220,7 +223,7 @@ export default function GetStarted(){
         }}
         >
             Get Started
-            </Button>
+            </Button>}
 
             <DialogWindow optouts = {optoutLinks} data = {results} open={dialogOpen} spinner = {showSpinner} closeDialog={handleCloseDialog} />
 
