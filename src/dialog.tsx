@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
@@ -88,6 +89,7 @@ interface FullScreenDialogProps {
             {(res.found == '1')? <Button variant="outlined" href = {findOptOut(res.hostname)} color="primary">Opt Out</Button> : <></>}
             </Grid>
           </Grid>
+          <Divider/>
         </Grid>
       ))}
     </Grid>
