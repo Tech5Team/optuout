@@ -40,6 +40,14 @@ interface FullScreenDialogProps {
     if (found) {
       return found.url;
     }
+
+    if (hostname.includes("411")) {
+      return "https://whitepagesprivacy.zendesk.com/hc/en-us/requests/new";
+    }
+
+    if (hostname.includes("quickpeopletrace")){
+      return "https://www.peoplefinders.com/opt-out"
+    }
     return "";
   }
   const handleClose = () => {
