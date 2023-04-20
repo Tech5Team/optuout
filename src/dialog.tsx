@@ -33,6 +33,7 @@ interface FullScreenDialogProps {
   }
   
   export default function DialogWindow({ open, data, spinner, optouts, closeDialog }: FullScreenDialogProps) {
+  const sortedData = [...data].sort((a, b) => (b.found as unknown as number) - (a.found as unknown as number) );
 
   const findOptOut = (hostname: string) => {
     const found = optouts.find((optout) => optout.url.includes(hostname));
@@ -76,7 +77,7 @@ interface FullScreenDialogProps {
         </AppBar>
 
         <Grid container spacing={2} alignItems = "center" justifyContent="center" sx ={{ display: 'flex', marginTop: 1, marginBottom: 1}}>
-      {data.map(res => (
+      {sortedData.map(res => (
         <Grid item xs={12} key={res.hostname}>
           <Grid container alignItems="center" spacing={1}>
             <Grid item>
