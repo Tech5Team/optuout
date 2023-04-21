@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { UserContext } from './context';
 
 
@@ -43,17 +43,18 @@ interface PlaceType {
 }
 
 export default function GoogleMaps() {
+  
   const [value, setValue] = React.useState<PlaceType | null>(null);
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState<readonly PlaceType[]>([]);
   const loaded = React.useRef(false);
 
-  const { cityState, setCityState } = useContext(UserContext);
+  const { cityState, setCityState, isLoggedin } = useContext(UserContext);
 
   const handleCityStateInputChange = (event:any) => {
     setCityState(event.target.value);
 };
-
+  
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
       loadScript(
@@ -123,7 +124,7 @@ export default function GoogleMaps() {
 
   return (
 
-    <Autocomplete
+    isLoggedin && <Autocomplete
       id="google-map-demo"
       sx={{ width: 300 }}
       getOptionLabel={(option) =>
