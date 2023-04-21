@@ -95,7 +95,7 @@ interface FullScreenDialogProps {
               <Typography variant="body1">{res.hostname}</Typography>
             </Grid>
             <Grid item>
-            {(res.found == '1')? <Button variant="outlined" href = {findOptOut(res.hostname)} color="primary">Opt Out</Button> : <></>}
+            {(res.found == '1')? <Button variant="outlined" target="_blank" href = {findOptOut(res.hostname)} color="primary">Opt Out</Button> : <></>}
             </Grid>
           </Grid>
           <Divider/>
