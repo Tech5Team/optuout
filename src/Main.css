@@ -70,12 +70,10 @@
 .laptop img {
     position: fixed;
     z-index: -5;
-
-    top: 45%;
-    left: 95%;
+    top: 47%;
+    left: 95.25%;
     width: 100%;
     height: auto;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     
 }
