@@ -185,7 +185,7 @@ export default function GetStarted(){
 
     return (
       <div>
-    <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "center", justifyContent: "center"}}>
+    <Stack direction ="row" spacing = {2} style={{ marginTop: '25px', alignItems: "stretch", justifyContent: "center"}}>
         
     {!isLoggedin && 
         <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
@@ -198,8 +198,8 @@ export default function GetStarted(){
     }}
   />
   </div>
-  }
-  
+  } 
+        
         {isLoggedin && <TextField 
         value = {name}
         onChange = {handleChange}
