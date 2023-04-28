@@ -123,6 +123,8 @@ export default function GetStarted(){
             return 
         }
         else if (trimmedCityState.length == 3){
+            handleOpenDialog();
+
             setResults([] as userFound[])
 
             let firstname = name.split(' ')[0];
@@ -203,7 +205,7 @@ export default function GetStarted(){
         {isLoggedin && <TextField 
         value = {name}
         onChange = {handleChange}
-        label = "Enter your full name:" 
+        label = "Enter your first and last name:" 
         autoFocus
         variant = "filled"
         color = "secondary" 
@@ -219,25 +221,16 @@ export default function GetStarted(){
         style = {{zIndex: 10}}
         onClick={() => {
           submit();
-          handleOpenDialog();
         }}
         >
             Get Started
             </Button>}
 
-            <DialogWindow optouts = {optoutLinks} data = {results} open={dialogOpen} spinner = {showSpinner} closeDialog={handleCloseDialog} />
 
     </Stack>
-    {results.length > 1 && <Button
-        variant = "contained" 
-        color = "secondary"
-        style = {{width: 250 ,zIndex: 10}}
-        onClick={() => {
-          handleOpenDialog()
-        }}
-        >
-            Open Results
-            </Button>}
+    <DialogWindow optouts = {optoutLinks} data = {results} open={dialogOpen} spinner = {showSpinner} closeDialog={handleCloseDialog} />
+
+    
     </div>
     )
 }
