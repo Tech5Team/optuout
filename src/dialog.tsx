@@ -48,6 +48,10 @@ interface FullScreenDialogProps {
     if (hostname.includes("quickpeopletrace")){
       return "https://www.peoplefinders.com/opt-out"
     }
+
+    if (hostname.includes("truthfinder")){
+      return "https://suppression.peopleconnect.us/login"
+    }
     return "";
   }
   const handleClose = () => {
