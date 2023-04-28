@@ -3,10 +3,10 @@
 # **Opt-U-Out**
 ## A tool designed to assit you in opting out of online directories. 
 ### Our goal is to further assist users in protecting their online privacy and identity.
-### We are commited to not collecting or selling/sharing any user data.
+### We are commited to not collecting, sharing, or selling any user data.
 <br><br>
 
-![Demo GIF](https://i.imgur.com/Y2vLy0S.gif)
+![Demo GIF](https://github.com/Tech5Team/optuout/blob/main/public/DemoGiF.gif?raw=true)
 <br><br>
 
 ## **How does it work?**
