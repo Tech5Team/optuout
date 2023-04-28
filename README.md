@@ -1,7 +1,7 @@
 <div align="center">
 
 # **Opt-U-Out**
-## A tool designed to assit you in opting out of online directories. 
+## A tool designed to help you opt out of online directories.
 ### Our goal is to further assist users in protecting their online privacy and identity.
 ### We are commited to not collecting, sharing, or selling any user data.
 <br><br>
