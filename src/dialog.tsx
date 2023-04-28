@@ -74,7 +74,7 @@ interface FullScreenDialogProps {
             </IconButton>
             
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {spinner? "Loading..." : "Results"} 
+              {spinner? "Loading... (please allow up to 2 minutes)" : "Results"} 
             </Typography>
             &nbsp; 
             {spinner?
