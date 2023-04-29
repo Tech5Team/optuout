@@ -92,7 +92,6 @@ export default function GetStarted(){
             .catch(error => console.error(error));
           }
       return () => {
-        console.log('done')
       }
     }, [isLoggedin])
     
@@ -114,7 +113,6 @@ export default function GetStarted(){
         var trimmedCityState = cityState.split(', ')
 
         if (!trimmedCityState.includes('USA')){
-            console.log('Must be in USA!');
             return
         }
 
@@ -132,7 +130,6 @@ export default function GetStarted(){
             let city = trimmedCityState[0];
             let state = trimmedCityState[1];
             city = city.replace(/ /g, '');
-            console.log(city)
             if (sanitizeFunc(city) == null) {
               return
             }
@@ -174,7 +171,6 @@ export default function GetStarted(){
                 }
             }).then(function(responseBody){
               const checkSites = responseBody.data.checkSites;
-              console.log(checkSites)
               setResults(checkSites);
             })
             .catch(function(error) {
