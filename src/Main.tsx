@@ -33,22 +33,22 @@ export default function Main() {
 
         <Grid container>
 
-        <Box m={10}display = "flex" justifyContent = "space-between">
+        <Box m={10} display="flex" justifyContent="space-between" flexGrow={1}>
         <Grid container spacing ={10} className = "left-paragraph">
           
         <Grid item>
 
         
 
-        <Typography variant = "h4">You have the right to choose what's out there for anyone to see.</Typography>
-        <Typography variant = "h6" style={{marginTop: '25px', marginLeft: '50px'}}>Our mission is to protect your privacy by helping you remove your info from people search websites. </Typography>
+        <Typography variant = "h4" style ={{fontSize: '1.75vw'}}>You have the right to choose what's out there for anyone to see.</Typography>
+        <Typography variant = "h6" style={{fontSize: '1.1vw', marginTop: '25px', marginLeft: '50px'}}>Our mission is to protect your privacy by helping you remove your info from people search websites. </Typography>
         
         &nbsp;
         
-        <Typography variant = "h4">How it works</Typography>
+        <Typography variant = "h4" style = {{fontSize: '1.75vw'}}>How it works</Typography>
         
-        <Typography variant = "h6" style={{marginTop: '25px', marginLeft: '50px'}}>1. Enter your first and last name, city, and state</Typography>
-        <Typography variant = "h6" style={{marginTop: '25px', marginLeft: '50px'}}>2. If your info exists on people search sites, we'll help you remove it</Typography>
+        <Typography variant = "h6" style={{fontSize: '1.1vw', marginTop: '25px', marginLeft: '50px'}}>1. Enter your first and last name, city, and state</Typography>
+        <Typography variant = "h6" style={{fontSize: '1.1vw',marginTop: '25px', marginLeft: '50px'}}>2. If your info exists on people search sites, we'll help you remove it</Typography>
         
         </Grid>
 

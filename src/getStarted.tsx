@@ -19,7 +19,7 @@ export interface OptOut{
 }
 
 function sanitizeFunc(sanitize: string) {
-  const nameRegex = /^[a-zA-Z\s']+$/; 
+  const nameRegex = /^[a-zA-Z\s'.]+$/;
   const sanitized = sanitize.trim();
 
   if (!nameRegex.test(sanitize)) {
@@ -122,16 +122,17 @@ export default function GetStarted(){
             alert("Please enter your first and last name");
             return 
         }
-        else if (trimmedCityState.length == 3){
+        else if (trimmedCityState.length >= 3){
             handleOpenDialog();
-
+            
             setResults([] as userFound[])
 
             let firstname = name.split(' ')[0];
             let lastname = name.split(' ')[1];
             let city = trimmedCityState[0];
             let state = trimmedCityState[1];
-
+            city = city.replace(/ /g, '');
+            console.log(city)
             if (sanitizeFunc(city) == null) {
               return
             }
