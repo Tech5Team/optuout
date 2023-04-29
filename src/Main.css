@@ -27,21 +27,12 @@
   }
 
   .left-paragraph{
-    font-size: 25px;
-    margin-left: 100px;
-    margin-top: 75px;
+    left: 2%;
     color: white;
     position: fixed;
     text-align: left;
   }
   
-  .right-paragraph{
-    font-size: 25px;
-    margin-right: 50px;
-    margin-top: 75px;
-    color: white;
-    text-align: right;
-  }
   
   .laptop {
     position: fixed;
